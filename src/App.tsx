@@ -1,39 +1,51 @@
-import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
+import React, { useState } from "react";
+import Welcome from "./Welcome";
+import SetupTeam from "./SetupTeam";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-const client = generateClient<Schema>();
+// Start with no teams
+const emptyTeams: any[] = [];
 
 function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-
-  useEffect(() => {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
-    });
-  }, []);
-
-  function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
-  }
+  const [teams, setTeams] = useState(emptyTeams);
 
   return (
-    <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
-        ))}
-      </ul>
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/react/start/quickstart/#make-frontend-updates">
-          Review next step of this tutorial.
-        </a>
-      </div>
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            teams.length === 4 ? (
+              <Welcome teams={teams} />
+            ) : (
+              // Redirect to setupTeam if teams are not set up
+              <Navigate to="/setupTeam" replace />
+            )
+          }
+        />
+        <Route
+          path="/setupTeam"
+          element={
+            <SetupTeam
+              onSubmit={(newTeams) =>
+                setTeams(
+                  newTeams.map((t, i) => ({
+                    id: t.id, // <-- preserve the id!
+                    name: t.name,
+                    logo: t.logo,
+                    points: 0,
+                    g1: "",
+                    g2: "",
+                    g3: "",
+                    g4: "",
+                  }))
+                )
+              }
+            />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

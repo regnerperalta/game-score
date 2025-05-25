@@ -1,0 +1,32 @@
+/* Add to your index.css or a new SetupTeam.css and import it in SetupTeam.tsx */
+.setup-team-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.setup-team-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.setup-team-form label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.setup-team-form input[type="text"] {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.setup-team-form input[type="file"] {
+  margin-top: 4px;
+}

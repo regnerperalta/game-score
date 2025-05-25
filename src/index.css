@@ -1,65 +1,111 @@
-body {
+html, body, #root {
+  height: 100%;
   margin: 0;
-  background: linear-gradient(180deg, rgb(117, 81, 194), rgb(255, 255, 255));
-  display: flex;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  height: 100vh;
+  padding: 0;
+}
+
+.welcome-background {
+  position: fixed;
+  inset: 0;
   width: 100vw;
-  justify-content: center;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  color: #fde68a;
+  font-family: serif;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start; /* Move content higher */
+  padding: 3rem 1rem 1rem 1rem; /* More padding at top, less at bottom */
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
+.welcome-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    padding: 1rem;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.welcome-h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.welcome-h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0;
+  color: black;
+}
+
+.welcome-main {
   color: white;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-ul {
-  padding-inline-start: 0;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  list-style-type: none;
+  max-width: 36rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 8px 0;
-  border: 1px solid black;
-  gap: 1px;
-  background-color: black;
-  border-radius: 8px;
-  overflow: auto;
+  align-items: center;    /* Center horizontally */
+  justify-content: center;/* Center vertically */
+  margin: 0 auto;         /* Center the main block itself if needed */
 }
 
-li {
-  background-color: white;
-  padding: 8px;
+.welcome-h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
-li:hover {
-  background: #dadbf9;
+.welcome-p {
+  margin-bottom: 1rem;
 }
 
-a {
-  font-weight: 800;
-  text-decoration: none;
+.welcome-ul {
+  list-style: disc inside;
+  margin-bottom: 1.5rem;
+  padding-left: 0;
+}
+
+.welcome-li {
+  margin-bottom: 0.5rem;
+}
+
+.welcome-button-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.welcome-button {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.welcome-join {
+  background: #b91c1c;
+}
+.welcome-join-hover {
+  background: #991b1b;
+}
+.welcome-learn {
+  background: #1f2937;
+}
+.welcome-learn-hover {
+  background: #111827;
+}
+
+.welcome-footer {
+  margin-top: 2.5rem;
+  font-size: 0.875rem;
+  color: #fde68a;
+  font-style: italic;
+  background: rgba(0,0,0,0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
 }
