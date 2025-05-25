@@ -3,7 +3,6 @@ import Welcome from "./Welcome";
 import SetupTeam from "./SetupTeam";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-// Start with no teams
 const emptyTeams: any[] = [];
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
             teams.length === 4 ? (
               <Welcome teams={teams} />
             ) : (
-              // Redirect to setupTeam if teams are not set up
               <Navigate to="/setupTeam" replace />
             )
           }
@@ -30,7 +28,7 @@ function App() {
               onSubmit={(newTeams) =>
                 setTeams(
                   newTeams.map((t, i) => ({
-                    id: t.id, // <-- preserve the id!
+                    id: t.id,
                     name: t.name,
                     logo: t.logo,
                     points: 0,
